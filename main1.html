@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spice Route – A Journey of Flavours</title>
+    <link rel="stylesheet" href="style1.css">
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>   
+</head>
+<body>
+    <div class="logo-header">
+    <img src="logo.png" alt="Spice Route Logo">
+</div>
+<nav class="navbar">
+    <ul>
+        <li><a href="#about">❀Home</a></li>
+        <li><a href="#menu">❀Menu</a></li>
+        <li><a href="#order">❀Order</a></li>
+        <li><a href="#reservations">❀Reserve</a></li>
+        <li><a href="#contact">❀Contact</a></li>
+        <li><a href="#" id="feedback-btn">❀Feedback</a></li>
+    </ul>
+</nav>
+<div id="feedback-form-container"></div>
+<section id="about" class="showcase">
+    <div class="hero-content">
+        <div class="hero-line"></div>
+        <div class="hero-text" id="hero-text">
+            <h1>Welcome to Spice Route</h1>
+            <p>Embark on a journey through the rich world of Indian spices fused with global flavors.</p>
+        </div>
+    </div>
+</section>
+
+
+<section id="menu" class="menu-section">
+        <div class = "section-heading">Our Menu</div> 
+        <div class="buttons">
+            <button class="menu-button" onclick="showMenu('veg')">Veg Menu</button>
+            <button class="menu-button" onclick="showMenu('nonveg')">Non-Veg Menu</button>
+            <button class="menu-button" onclick="showMenu('dessert')">Desserts</button>
+            <button class="menu-button" onclick="showMenu('drinks')">Drinks</button>
+        </div>
+        <div id="veg" class="menu">
+            <div class = "sub-menu"><h3>Vegetarian</h3></div>
+        
+        <div class="menu-grid">
+            <div class="menu-item" style="background-image: url('tpt.png');">
+                <div class="menu-text">
+                <p><strong>Tandoori Paneer Tacos</strong><br><span class="description">Soft tortillas filled with smoky paneer & mint yogurt.</span></p>
+                <span class="price">₹250</span>
+                <input type="number" id="paneerQty" min="1" value="1">
+                <button class="menu-btn" onclick="addToPlate('Tandoori Paneer Tacos', 250, document.getElementById('paneerQty').value)">Add to Plate</button>
+        </div>
+            </div>
+            <div class="menu-item" style="background-image: url('bp.png');">
+                <div class="menu-text">
+                <p><strong>Biryani Paella</strong><br><span class="description">A fusion of Spanish Paella & Indian Biryani.</span></p>
+                <span class="price">₹350</span>
+        <input type="number" id="biryaniPaellaQty" min="1" value="1">
+                <button class="menu-btn" onclick="addToPlate('Biryani Paella', 350, document.getElementById('biryaniPaellaQty').value)">Add to Plate</button>
+        </div>
+            </div>
+        <div class="menu-item" style="background-image: url('mkr.png');">
+                <div class="menu-text">
+                <p><strong>Malai Kofta Ravioli</strong><br><span class="description">Soft paneer & potato dumplings served in a creamy saffron tomato sauce.</span></p>
+                <span class="price">₹450</span>
+        <input type="number" id="malaiKoftaQty" min="1" value="1">
+                <button class="menu-btn" onclick="addToPlate('Malai Kofta Ravioli', 450, document.getElementById('malaiKoftaQty').value)">Add to Plate</button>
+        </div>
+            </div>
+            <div class="menu-item" style="background-image: url('avocado-toast.jpg');">
+                <div class="menu-text">
+                    <p><strong>Avocado Toast</strong><br><span class="description">Toasted bread topped with creamy avocado, cherry tomatoes, and basil.</span></p>
+                    <span class="price">₹180</span>
+                    <input type="number" id="avocadoQty" min="1" value="1">
+                    <button class="menu-btn" onclick="addToPlate('Avocado Toast', 180, document.getElementById('avocadoQty').value)">Add to Plate</button>
+                </div>
+            </div>
+            <div class="menu-item" style="background-image: url('quinoa-salad.jpg');">
+                <div class="menu-text">
+                    <p><strong>Quinoa Salad</strong><br><span class="description">A refreshing mix of quinoa, cucumbers, pomegranate, and mint.</span></p>
+                    <span class="price">₹220</span>
+                    <input type="number" id="quinoaQty" min="1" value="1">
+                    <button class="menu-btn" onclick="addToPlate('Quinoa Salad', 220, document.getElementById('quinoaQty').value)">Add to Plate</button>
+                </div>
+            </div>
+            <div class="menu-item" style="background-image: url('risotto.jpg');">
+                <div class="menu-text">
+                    <p><strong>Truffle Butter Paneer Risotto</strong><br><span class="description">Creamy risotto with truffle butter and paneer.</span></p>
+                    <span class="price">₹400</span>
+                    <input type="number" id="risottoQty" min="1" value="1">
+                    <button class="menu-btn" onclick="addToPlate('Truffle Butter Paneer Risotto', 400, document.getElementById('risottoQty').value)">Add to Plate</button>
+                </div>
+            </div>
+                <div class="menu-item" style="background-image: url('spinach-artichoke-dip.jpg');">
+                    <div class="menu-text">
+                        <p><strong>Spinach & Artichoke Dip</strong><br><span class="description">Creamy dip with spinach and artichokes, served with crackers.</span></p>
+                        <span class="price">₹220</span>
+                        <input type="number" id="spinachDipQty" min="1" value="1">
+                        <button class="menu-btn" onclick="addToPlate('Spinach & Artichoke Dip', 220, document.getElementById('spinachDipQty').value)">Add to Plate</button>
+                    </div>
+                </div>
+                <div class="menu-item" style="background-image: url('stuffed-mushrooms.jpg');">
+                    <div class="menu-text">
+                        <p><strong>Stuffed Mushrooms</strong><br><span class="description">Mushrooms filled with cheese and herbs.</span></p>
+                        <span class="price">₹250</span>
+                        <input type="number" id="stuffedMushroomsQty" min="1" value="1">
+                        <button class="menu-btn" onclick="addToPlate('Stuffed Mushrooms', 250, document.getElementById('stuffedMushroomsQty').value)">Add to Plate</button>
+                    </div>
+                </div>
+                <div class="menu-item" style="background-image: url('pasta-primavera.jpg');">
+                    <div class="menu-text">
+                        <p><strong>Pasta Primavera</strong><br><span class="description">Fresh pasta with a mix of vegetables in a light sauce.</span></p>
+                        <span class="price">₹320</span>
+                        <input type="number" id="pastaPrimaveraQty" min="1" value="1">
+                        <button class="menu-btn" onclick="addToPlate('Pasta Primavera', 320, document.getElementById('pastaPrimaveraQty').value)">Add to Plate</button>
+                    </div>
+                </div>
+                <div class="menu-item" style="background-image: url('falafel.jpg');">
+                    <div class="menu-text">
+                        <p><strong>Falafel</strong><br><span class="description">Crispy chickpea patties served with tahini sauce.</span></p>
+                        <span class="price">₹180</span>
+                        <input type="number" id="falafelQty" min="1" value="1">
+                        <button class="menu-btn" onclick="addToPlate('Falafel', 180, document.getElementById('falafelQty').value)">Add to Plate</button>
+                    </div>
+                </div>
+                <div class="menu-item" style="background-image: url('lentil-curry.jpg');">
+                    <div class="menu-text">
+                        <p><strong>Lentil Curry</strong><br><span class="description">Hearty lentil curry with aromatic spices.</span></p>
+                        <span class="price">₹220</span>
+                        <input type="number" id="lentilCurryQty" min="1" value="1">
+                        <button class="menu-btn" onclick="addToPlate('Lentil Curry', 220, document.getElementById('entilCurryQty').value)">Add to Plate</button>
+                    </div>
+                </div>
+                <div class="menu-item" style="background-image: url('paneer-tikka.jpg');">
+                    <div class="menu-text">
+                        <p><strong>Paneer Tikka</strong><br><span class="description">Grilled marinated paneer cubes served with mint chutney.</span></p>
+                        <span class="price">₹300</span>
+                        <input type="number" id="paneerTikkaQty" min="1" value="1">
+                        <button class="menu-btn" onclick="addToPlate('Paneer Tikka', 300, document.getElementById('paneerTikkaQty').value)">Add to Plate</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="nonveg" class="menu">
+        <div class = "sub-menu"><h3>Non-Vegetarian</h3></div>
+        <div class="menu-grid">
+            <div class="menu-item" style="background-image: url('bcb.png');">
+        <div class="menu-text">
+                <p><strong>Butter Chicken Bao</strong><br><span class="description">Steamed bao with creamy butter chicken.</span></p>
+                <span class="price">₹300</span>
+        <input type="number" id="butterChickenBaoQty" min="1" value="1">
+                <button class="menu-btn" onclick="addToPlate('Butter Chicken Bao', 300, document.getElementById('butterChickenBaoQty').value)">Add to Plate</button>
+        </div>
+            </div>
+            <div class="menu-item" style="background-image: url('mbl.png');">
+                <div class="menu-text">
+                <p><strong>Malabar Butter Lobster</strong><br><span class="description">Fresh lobster in spiced coconut butter sauce.</span></p>
+                <span class="price">₹600</span>
+        <input type="number" id="malabarLobsterQty" min="1" value="1">
+                <button class="menu-btn" onclick="addToPlate('Malabar Butter Lobster', 600, document.getElementById('malabarLobsterQty').value)">Add to Plate</button>
+        </div>
+            </div>
+            <div class="menu-item" style="background-image: url('bcr.png');">
+                <div class="menu-text">
+                <p><strong>Truffle Butter Chicken Risotto</strong><br><span class="description">Creamy risotto infused with truffle oil, topped with classic butter.</span></p>
+                <span class="price">₹550</span>
+        <input type="number" id="truffleRisottoQty" min="1" value="1">
+                <button class="menu-btn" onclick="addToPlate('Truffle Butter Chicken Risotto', 550, document.getElementById('truffleRisottoQty').value)">Add to Plate</button>
+        </div>
+            </div>
+            <div class="menu-item" style="background-image: url('chicken-makhani.jpg');">
+                <div class="menu-text">
+                    <p><strong>Chicken Makhani Pizza</strong><br><span class="description">Pizza with butter chicken, cheese, and coriander.</span></p>
+                    <span class="price">₹400</span>
+                    <input type="number" id="makhaniQty" min="1" value="1">
+                    <button class="menu-btn" onclick="addToPlate('Chicken Makhani Pizza', 400, document.getElementById('makhaniQty').value)">Add to Plate</button>
+                </div>
+            </div>
+            <div class="menu-item" style="background-image: url('fish-curry.jpg');">
+                <div class="menu-text">
+                    <p><strong>Kerala Fish Curry</strong><br><span class="description">Fresh fish cooked in tangy coconut gravy.</span></p>
+                    <span class="price">₹350</span>
+                    <input type="number" id="fishQty" min="1" value="1">
+                    <button class="menu-btn" onclick="addToPlate('Kerala Fish Curry', 350, document.getElementById('ishQty').value)">Add to Plate</button>
+                </div>
+            </div>
+            <div class="menu-item" style="background-image: url('chicken-biryani.jpg');">
+                <div class="menu-text">
+                    <p><strong>Chicken Biryani</strong><br><span class="description">Fragrant rice with marinated chicken cooked to perfection.</span></p>
+                    <span class="price">₹350</span>
+                    <input type="number" id="biryaniQty" min="1" value="1">
+                    <button class="menu-btn" onclick="addToPlate('Chicken Biryani', 350, document.getElementById('biryaniQty').value)">Add to Plate</button>
+                </div>
+            </div>
+            <div class="menu-item" style="background-image: url('duck-confit.jpg');">
+                <div class="menu-text">
+                    <p><strong>Duck Confit</strong><br><span class="description">Slow-cooked duck leg served with roasted vegetables.</span></p>
+                    <span class="price">₹600</span>
+                    <input type="number" id="duckQty" min="1" value="1">
+                    <button class="menu-btn" onclick="addToPlate('Duck Confit', 600, document.getElementById('duckQty').value)">Add to Plate</button>
+                </div>
+            </div>
+            <div class="menu-item" style="background-image: url('beef-steak.jpg');">
+                <div class="menu-text">
+                    <p><strong>Grilled Beef Steak</strong><br><span class="description">Tender beef steak served with mashed potatoes.</span></p>
+                    <span class="price">₹500</span>
+                    <input type="number" id="beefSteakQty" min="1" value="1">
+                    <button class="menu-btn" onclick="addToPlate('Grilled Beef Steak', 500, document.getElementById('beefSteakQty').value)">Add to Plate</button>
+                </div>
+            </div>
+            <div class="menu-item" style="background-image: url('lamb-chops.jpg');">
+                <div class="menu-text">
+                    <p><strong>Lamb Chops</strong><br><span class="description">Succulent lamb chops served with mint sauce.</span></p>
+                    <span class="price">₹650</span>
+                    <input type="number" id="lambChopsQty" min="1" value="1">
+                    <button class="menu-btn" onclick="addToPlate('Lamb Chops', 650, document.getElementById('lambChopsQty').value)">Add to Plate</button>
+                </div>
+            </div>
+            <div class="menu-item" style="background-image: url('grilled-salmon.jpg');">
+                <div class="menu-text">
+                    <p><strong>Grilled Salmon</strong><br><span class="description">Tender salmon grilled with lemon butter sauce.</span></p>
+                    <span class="price">₹450</span>
+                    <input type="number" id="salmonQty" min="1" value="1">
+                    <button class="menu-btn" onclick="addToPlate('Grilled Salmon', 450, document.getElementById('salmonQty').value)">Add to Plate</button>
+                </div>
+            </div>
+            <div class="menu-item" style="background-image: url('grilled-chicken.jpg');">
+                <div class="menu-text">
+                    <p><strong>Grilled Chicken</strong><br><span class="description">Tender grilled chicken served with a side of fries.</span></p>
+                    <span class="price">₹400</span>
+                    <input type="number" id="grilledChickenQty" min="1" value="1">
+                    <button class="menu-btn" onclick="addToPlate('Grilled Chicken', 400, document.getElementById('grilledChickenQty').value)">Add to Plate</button>
+                </div>
+            </div>
+            <div class="menu-item" style="background-image: url('fish-tacos.jpg');">
+                <div class="menu-text">
+                    <p><strong>Fish Tacos</strong><br><span class="description">Soft tortillas with grilled fish, avocado, and slaw.</span></p>
+                    <span class="price">₹280</span>
+                    <input type="number" id="fishTacosQty" min="1" value="1">
+                    <button class="menu-btn" onclick="addToPlate('Fish Tacos', 280, document.getElementById('fishTacosQty').value)">Add to Plate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div id="dessert" class="menu">
+ <div class = "sub-menu"><h3>Desserts</h3></div>
+<div class="menu-grid">
+    <div class="menu-item" style="background-image: url('gck.png');">
+        <div class="menu-text">
+        <p><strong>Gulab Jamun Cheesecake</strong><br><span class="description">New York-style cheesecake infused with cardamom, topped with gulab jamun syrup.</span></p>
+        <span class="price">₹300</span>
+        <input type="number" id="gulabCheesecakeQty" min="1" value="1">
+        <button class="menu-btn" onclick="addToPlate('Gulab Jamun Cheesecake', 300, document.getElementById('gulabCheesecakeQty').value)">Add to Plate</button>
+        </div>
+    </div>
+    <div class="menu-item" style="background-image: url('ct.png');">
+        <div class="menu-text">
+        <p><strong>Chai Tiramisu</strong><br><span class="description">Classic tiramisu made with masala chai instead of coffee.</span></p>
+        <span class="price">₹280</span>
+    <input type="number" id="chaiTiramisuQty" min="1" value="1">
+        <button class="menu-btn" onclick="addToPlate('Chai Tiramisu', 280, document.getElementById('chaiTiramisuQty').value)">Add to Plate</button>
+        </div>
+    </div>
+    <div class="menu-item" style="background-image: url('rts.png');">
+        <div class="menu-text">
+        <p><strong>Rasmalai Tres Leches</strong><br><span class="description">A fusion of Bengali rasmalai and Latin American tres leches cake.</span></p>
+        <span class="price">₹320</span>
+    <input type="number" id="rasmalaiTresLechesQty" min="1" value="1">
+        <button class="menu-btn" onclick="addToPlate('Rasmalai Tres Leches', 320, document.getElementById('rasmalaiTresLechesQty').value)">Add to Plate</button>
+        </div>
+    </div>
+    <div class="menu-item" style="background-image: url('carrot-cake.jpg');">
+        <div class="menu-text">
+            <p><strong>Carrot Cake</strong><br><span class="description">Moist carrot cake with cream cheese frosting.</span></p>
+            <span class="price">₹180</span>
+            <input type="number" id="carrotQty" min="1" value="1">
+            <button class="menu-btn" onclick="addToPlate('Carrot Cake', 180, document.getElementById('carrotQty').value)">Add to Plate</button>
+        </div>
+    </div>
+    <div class="menu-item" style="background-image: url('cs.png');">
+        <div class="menu-text">
+        <p><strong>Chocolate samosa</strong><br><span class="description">crispy pastry filled with warm, gooey chocolate, a sweet twist on the classic savory snack.</span></p>
+        <span class="price">₹250</span>
+        <input type="number" id="ChocolateSamosaQty" min="1" value="1">
+        <button class="menu-btn" onclick="addToPlate('Chocolate samosa', 250, document.getElementById('ChocolateSamosaQty').value)">Add to Plate</button>
+        </div>
+    </div>
+    <div class="menu-item" style="background-image: url('pistachio.jpg');">
+        <div class="menu-text">
+            <p><strong>Pistachio Kulfi</strong><br><span class="description">Creamy kulfi with a rich pistachio flavor.</span></p>
+            <span class="price">₹240</span>
+            <input type="number" id="kulfiQty" min="1" value="1">
+            <button class="menu-btn" onclick="addToPlate('Pistachio Kulfi', 240, document.getElementById('kulfiQty').value)">Add to Plate</button>
+        </div>
+    </div>
+</div>
+</div>
+<div id="drinks" class="menu">
+    <div class = "sub-menu"><h3>Drinks and Cocktails</h3></div>
+
+<div class="menu-grid">
+    <div class="menu-item" style="background-image: url('tlm.png');">
+        <div class="menu-text">
+        <p><strong>Turmeric Latte Martini</strong><br><span class="description">A cocktail blending turmeric, vanilla vodka, and coconut milk.</span></p>
+        <span class="price">₹350</span>
+    <input type="number" id="turmericMartiniQty" min="1" value="1">
+        <button class="menu-btn" onclick="addToPlate('Turmeric Latte Martini', 350, document.getElementById('turmericMartiniQty').value)">Add to Plate</button>
+        </div>
+    </div>
+    <div class="menu-item" style="background-image: url('mws.png');">
+        <div class="menu-text">
+        <p><strong>Masala Whiskey Sour</strong><br><span class="description">Classic whiskey sour infused with garam masala bitters.</span></p>
+        <span class="price">₹400</span>
+    <input type="number" id="masalaWhiskeyQty" min="1" value="1">
+        <button class="menu-btn" onclick="addToPlate('Masala Whiskey Sour', 400, document.getElementById('masalaWhiskeyQty').value)">Add to Plate</button>
+        </div>
+    </div>
+    <div class="menu-item" style="background-image: url('mlm.png');">
+        <div class="menu-text">
+        <p><strong>Mango Lassi Mojito</strong><br><span class="description">A refreshing twist on a mojito with mango lassi flavors.</span></p>
+        <span class="price">₹320</span>
+    <input type="number" id="mangoMojitoQty" min="1" value="1">
+        <button class="menu-btn" onclick="addToPlate('Mango Lassi Mojito', 320,document.getElementById('mangoMojitoQty').value)">Add to Plate</button>
+        </div>
+    </div>
+    <div class="menu-item" style="background-image: url('mimosa.jpg');">
+        <div class="menu-text">
+            <p><strong>Mimosa</strong><br><span class="description">A refreshing cocktail with orange juice and champagne.</span></p>
+            <span class="price">₹250</span>
+            <input type="number" id="mimosaQty" min="1" value="1">
+            <button class="menu-btn" onclick="addToPlate('Mimosa', 250, document.getElementById('mimosaQty').value)">Add to Plate</button>
+        </div>
+    </div>
+    <div class="menu-item" style="background-image: url('rosecardamon.jpg');">
+        <div class="menu-text">
+            <p><strong>Rose Cardamom Cold Brew</strong><br><span class="description">A refreshing coffee blend infused with aromatic rose and cardamom.</span></p>
+            <span class="price">₹350</span>
+            <input type="number" id="ColdBrewQty" min="1" value="1">
+            <button class="menu-btn" onclick="addToPlate('Rose Cardamom Cold Brew', 350, document.getElementById('ColdBrewQty').value)">Add to Plate</button>
+        </div>
+    </div>
+    <div class="menu-item" style="background-image: url('smoothie.jpg');">
+        <div class="menu-text">
+            <p><strong>Berry Smoothie</strong><br><span class="description">A creamy blend of berries and yogurt.</span></p>
+            <span class="price">₹200</span>
+            <input type="number" id="smoothieQty" min="1" value="1">
+            <button class="menu-btn" onclick="addToPlate('Berry Smoothie', 200, document.getElementById('smoothieQty').value)">Add to Plate</button>
+        </div>
+    </div>
+</div>
+</div>
+
+</section>
+<section id="spin-wheel" class="spin-wheel-section">
+    <h2>Feeling Indecisive? Spin the Wheel!</h2>
+    <label for="categorySelect">Choose Category:</label>
+<select id="categorySelect">
+    <option value="veg">Veg</option>
+    <option value="nonveg">Non-Veg</option>
+    <option value="desserts">Desserts</option>
+    <option value="drinks">Drinks</option>
+</select>
+    <canvas id="wheelCanvas"></canvas>
+    <button class="spinButton" id="spinButton">Spin</button>
+    <p id="selectedItem"></p>
+    <p id="resultText"><span id="selectedItem"></span></p>
+</section>
+<section id="advertisement" class="advertisement-section">
+    <div class="advertisement-content">
+        <h3>🎊Special Offer This Week!🎊</h3>
+        <p><b>Enjoy 20% off on guessing correct number ❤︎</b></p>
+        <p>Ensure to add items to the plate before playing❗️</p>
+        <a href="#order" class="sec-btn">Play now!!</a>
+    </div>
+</section>
+
+    <section id="order" class="order-section">
+        <div class = "section-heading">Order Online</div> 
+        <form id="orderForm">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="text" id="phone" placeholder="Phone Number" required>
+            <textarea id="address" placeholder="Delivery Address" required></textarea>
+            <h3>Selected Items:</h3>
+            <ul id="plateList"></ul>
+            <h3>Total Amount: <span id="totalAmount">₹0</span></h3>
+            <button class="sec-btn" type="submit" id="placeOrderBtn">Place Order</button>
+            <div class="overlay" id="overlay"></div>
+            <div class="popup" id="popup">
+                <p>Your order has been placed successfully! It will be at your doorstep in 30 minutes!🥳</p>
+                <button onclick="closePopup()">OK</button>
+            </div>
+        </form>
+    </section>
+
+
+    <section class="guessing-game-section" >
+        <h2 class="section-heading" id="guess">Guess the Number for a Discount!</h2>
+        <p>Guess a number between 0 and 10 for a 20% discount on your order!</p>
+        <p> MAKE SURE YOUR ITEMS ARE ADDED IN THE PLATE FOR THE DISCOUNT TO BE APPLIED ☺️</p>
+        <input type="number" id="guessInput" min="0" max="10">
+        <button id="guessButton" class="sec-btn">Guess</button>
+        <p id="guessResult"></p>
+    </section>
+
+    <section id="reservations" class="reservation-section">
+        <div class = "section-heading">Reserve a Table</div> 
+        <form id="reservationForm">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <input type="datetime-local" id="reservationDateTime" required>
+            <input type="number" placeholder="Number of Guests" min="1" required>
+            <button class="sec-btn" type="submit">Book Now</button>
+            <div class="overlay" id="reservationOverlay"></div>
+            <div class="popup" id="reservationPopup">
+                <p>Table reserved successfully!</p>
+                <button onclick="closeReservationPopup()">OK</button>
+            </div>
+        </form>
+    </section>
+
+    <section class="contact-section" id="contact">
+    <div class="contact-left">
+        <h2>Contact Us</h2>
+    </div>
+    <div class="contact-right">
+        <p><strong>Email:</strong>📩 info@spiceroute.com</p>
+        <p><strong>Phone:</strong>📞 +91 12345 67890</p>
+        <p><strong>Address:</strong>📍 123 Spice Street, Culinary City, FL 45678</p>
+    </div>
+</section>
+    <footer>
+        <p>&copy; 2025 Spice Route. All Rights Reserved.</p>
+    </footer>
+    <script src = "script1.js"></script>
+    <script type="text/babel">
+        function FeedbackForm({ onClose }) {
+            const [rating, setRating] = React.useState(0);
+            const [hover, setHover] = React.useState(0);
+            const [submitted, setSubmitted] = React.useState(false);
+
+            const handleSubmit = () => {
+                if (rating === 0) {
+                    alert("Please select a rating!");
+                    return;
+                }
+                setSubmitted(true);
+                setTimeout(() => {
+                    setSubmitted(false);
+                    onClose();
+                }, 2000);
+            };
+
+            return submitted ? (
+                <div className="thank-you">
+                    <h3>Thank you for your feedback! 😊</h3>
+                </div>
+            ) : (
+                <div className="feedback-container">
+                    <h2>Feedback</h2>
+                    <p>Rate your experience:</p>
+                    <div className="stars">
+                        {[1, 2, 3, 4, 5].map((star) => (
+                            <span 
+                                key={star} 
+                                className={`star ${star <= (hover || rating) ? "filled" : ""}`} 
+                                onClick={() => setRating(star)} 
+                                onMouseEnter={() => setHover(star)} 
+                                onMouseLeave={() => setHover(rating)}
+                            >
+                                ★
+                            </span>
+                        ))}
+                    </div>
+                    <br />
+                    <textarea rows="4" cols="30" placeholder="Your feedback..."></textarea>
+                    <br /><br />
+                    <button class = "btn-maroon" onClick={handleSubmit}>Submit</button>
+                    <button class = "btn-maroon" onClick={onClose} style={{ marginLeft: "10px" }}>Close</button>
+                </div>
+            );
+        }
+
+        function App() {
+            const [showFeedback, setShowFeedback] = React.useState(false);
+
+            React.useEffect(() => {
+                const button = document.getElementById("feedback-btn");
+                const openForm = () => setShowFeedback(true);
+
+                if (button) {
+                    button.addEventListener("click", openForm);
+                }
+                
+                return () => {
+                    if (button) {
+                        button.removeEventListener("click", openForm);
+                    }
+                };
+            }, []);
+
+            return showFeedback ? <FeedbackForm onClose={() => setShowFeedback(false)} /> : null;
+        }
+        ReactDOM.createRoot(document.getElementById("feedback-form-container")).render(<App />);
+    </script>     
+</body>
+</html>

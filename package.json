@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "@babel/preset-react": "^7.26.3",
+    "@babel/standalone": "^7.27.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.4.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "dev": "react-scripts start"
+  },
+  "devDependencies": {
+    "react-scripts": "^5.0.1"
+  }
+}
